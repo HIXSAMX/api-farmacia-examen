@@ -1,16 +1,20 @@
 module.exports = (app) => {
+    const usuarios = require("../controllers/usuario.js");
 
     var router = require("express").Router();
+    var bodyParser = require('body-parser');
+    var jsonParser = bodyParser.json()
+    var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
     /*Aquí estarán las rutas*/
     //Validar datos del login
-    //router.post("/auth/signin",usuarios.validarLogin);
+    router.post("/auth/signin",jsonParser, urlencodedParser,usuarios.validarLogin);
 
-    app.use('/api-portal-rh', router);
+    app.use('/api-farmacia-examen', router);
 
     //URL para validar conexión a la API
-    app.get('/api-portal-rh/', (req, res) => res.status(200).send({
+    app.get('/api-farmacia-examen/', (req, res) => res.status(200).send({
         message: 'Conexión a la api',
     }));
 
