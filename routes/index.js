@@ -1,6 +1,6 @@
 module.exports = (app) => {
     const usuarios = require("../controllers/usuario.js");
-    const productos = require("../controllers/usuario.js");
+    const productos = require("../controllers/producto.js");
 
     var router = require("express").Router();
     var bodyParser = require('body-parser');
@@ -12,7 +12,8 @@ module.exports = (app) => {
     //Validar datos del login
     router.post("/auth/signin",jsonParser, urlencodedParser,usuarios.validarLogin);
     //Alta de productod
-    //router.post("/new/product",jsonParser, urlencodedParser,usuarios.validarLogin);
+    router.post("/new/product",jsonParser, urlencodedParser,productos.altaProducto);
+
     app.use('/api-farmacia-examen', router);
 
     //URL para validar conexión a la API
