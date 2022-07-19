@@ -13,9 +13,9 @@ exports.validarLogin = (req, res) => {
                 });
             }
         } else {
-            console.log(data)
             var user = {
                 username: data.usuario,
+                tipo: data.id,
                 usuarioValido: "OK"
             }
 
